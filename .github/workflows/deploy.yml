@@ -10,8 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout
-      uses: actions/checkout@v4
+    - uses: actions/checkout@v4
 
     - name: Setup Python
       uses: actions/setup-python@v5
@@ -19,11 +18,10 @@ jobs:
         python-version: '3.11'
 
     - name: Install dependencies
-      run: |
-        pip install -r requirements.txt
+      run: pip install -r requirements.txt
 
     - name: Deploy to Azure Web App
       uses: azure/webapps-deploy@v3
       with:
-        app-name: azure-docker-app
+        app-name: azure-flask-app-khs
         publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
